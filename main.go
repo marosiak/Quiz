@@ -20,10 +20,8 @@ func main() {
 
 	viewsSrv := views.NewViewsService(db)
 	register(router, viewsSrv)
+	migrate(router, db)
 
-	db.AutoMigrate(&models.Game{})
-	db.AutoMigrate(&models.Question{})
-	db.AutoMigrate(&models.Answer{})
 	log.Fatal(fasthttp.ListenAndServe(":8080", router.Handler))
 }
 
@@ -31,4 +29,10 @@ func main() {
 func register(router *fasthttprouter.Router, viewsSrv *views.InternalViewsService) {
 	router.GET("/games", viewsSrv.GetGamesList)
 	router.GET("/games/:id", viewsSrv.GetGame)
+}
+
+func migrate(router *fasthttprouter.Router, db *gorm.DB) {
+	db.AutoMigrate(&models.Game{})
+	db.AutoMigrate(&models.Question{})
+	db.AutoMigrate(&models.Answer{})
 }
