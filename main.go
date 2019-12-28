@@ -29,6 +29,7 @@ func main() {
 func register(router *fasthttprouter.Router, viewsSrv *views.InternalViewsService) {
 	router.GET("/games", viewsSrv.GetGamesList)
 	router.GET("/games/:id", viewsSrv.GetGame)
+	router.GET("/games/:id/questions", viewsSrv.GetQuestionsList)
 }
 
 func migrate(router *fasthttprouter.Router, db *gorm.DB) {
