@@ -1,3 +1,4 @@
 
 vendor/github.com/
 vendor/google.golang.org/
+.idea
