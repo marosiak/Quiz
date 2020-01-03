@@ -3,8 +3,11 @@ package views
 import "github.com/jinzhu/gorm"
 
 type ViewsService interface {
-	GetGamesList()
+	GetGames()
 	GetGame()
+
+	GetQuestions()
+	GetQuestionsByID()
 }
 
 type InternalViewsService struct {
@@ -14,3 +17,4 @@ type InternalViewsService struct {
 func NewViewsService(db *gorm.DB) *InternalViewsService {
 	return &InternalViewsService{db: db}
 }
+

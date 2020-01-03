@@ -7,7 +7,7 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-func (srv* InternalViewsService) GetGamesList(ctx *fasthttp.RequestCtx) {
+func (srv* InternalViewsService) GetGames(ctx *fasthttp.RequestCtx) {
 	var games []models.Game
 	srv.db.Find(&games)
 	output, err := json.Marshal(games)

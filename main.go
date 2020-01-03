@@ -27,9 +27,12 @@ func main() {
 
 
 func register(router *fasthttprouter.Router, viewsSrv *views.InternalViewsService) {
-	router.GET("/games", viewsSrv.GetGamesList)
+	router.GET("/games", viewsSrv.GetGames)
 	router.GET("/games/:id", viewsSrv.GetGame)
-	router.GET("/games/:id/questions", viewsSrv.GetQuestionsList)
+	router.GET("/games/:id/questions", viewsSrv.GetQuestionsByID)
+
+	router.GET("/questions", viewsSrv.GetQuestions) // All questions, In case you'd like to get some random questions from all games
+	router.GET("/questions/:id", viewsSrv.GetGame) // Question + Answers
 }
 
 func migrate(router *fasthttprouter.Router, db *gorm.DB) {
