@@ -1,11 +1,8 @@
-version: '3'
+version: "3.7"
 
 services:
   db:
     image: mysql
-    ports:
-      - "3306:3306" # REMOVE BEFORE DEPLOY, USE FOR DEV ONLY #
-    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: "password"
       MYSQL_DATABASE: "application"
@@ -24,6 +21,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    command: ["./wait-for-it.sh", "db:3306", "--"]
     restart: always
     links:
       - db

@@ -23,12 +23,11 @@ RUN go mod download
 # Copy the source from the current directory to the Working Directory inside the container
 COPY . .
 
+# We need it to wait for database
+COPY https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh .
+
 # Build the Go app
 RUN go build -o app/main .
 
-# Expose port 8080 to the outside world
-EXPOSE 8080
-
 # Run the executable
-
-CMD ["go","run","main.go"]
+CMD ["./app/main"]
