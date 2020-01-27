@@ -24,7 +24,7 @@ RUN go mod download
 COPY . .
 
 # We need it to wait for database
-COPY https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh .
+COPY wait-for-it.sh .
 
 # Build the Go app
 RUN go build -o app/main .
