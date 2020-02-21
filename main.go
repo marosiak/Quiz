@@ -11,10 +11,9 @@ import (
 )
 func main() {
 	router := fasthttprouter.New()
-
 	db, err := gorm.Open("mysql", "root:password@(db)/application")
 	if err != nil {
-		panic("failed to connect database")
+		panic(err)
 	}
 	defer db.Close()
 
