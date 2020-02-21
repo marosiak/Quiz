@@ -23,11 +23,11 @@ RUN go mod download
 # Copy the source from the current directory to the Working Directory inside the container
 COPY . .
 
+
 # We need it to wait for database
-COPY wait-for-it.sh .
+COPY wait-for .
 
 # Build the Go app
-RUN go build -o app/main .
-
-# Run the executable
-CMD ["./app/main"]
+RUN go build -v -o app/main .
+#COPY . .
+RUN ls -al /app

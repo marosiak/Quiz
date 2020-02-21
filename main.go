@@ -3,7 +3,6 @@ package main
 import (
 	"Quiz/models"
 	"Quiz/views"
-	"fmt"
 	"github.com/buaazp/fasthttprouter"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -12,10 +11,8 @@ import (
 )
 func main() {
 	router := fasthttprouter.New()
-
 	db, err := gorm.Open("mysql", "root:password@(db)/application")
 	if err != nil {
-		fmt.Printf("dddd")
 		panic(err)
 	}
 	defer db.Close()

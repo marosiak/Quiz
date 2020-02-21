@@ -21,12 +21,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-#    command: ["./wait-for-it.sh", "db:3360", "--"]
-    restart: always
+    command: ["./wait-for", "db:3306", "--", "./app/main"]
+    restart: on-failure
     links:
       - db
-    volumes:
-      - .:/app
     depends_on:
       - db
     networks:
