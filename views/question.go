@@ -7,7 +7,7 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-func (srv* InternalViewsService) GetQuestionsByID(ctx *fasthttp.RequestCtx) {
+func (srv* InternalViewsService) GetQuestionsByGameID(ctx *fasthttp.RequestCtx) {
 	id := ctx.UserValue("id").(string)
 	var game models.Game
 	srv.db.Where("id = ?", id).First(&game)
